@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | BYTE & BITE</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0e0 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 10% 20%, #160900 0%, transparent 60%),
+        radial-gradient(circle at 90% 10%, #ffb380 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, #ffae42 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, #ff6b35 0%, transparent 60%),
+        url('assets/images/pattern.svg') repeat;
+      opacity: 0.18;
+      pointer-events: none;
+      animation: funkybg 18s linear infinite alternate;
+    }
+    @keyframes funkybg {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(30deg); }
+    }
+    .landing-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .landing-title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ff6600 30%, #181818 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 4px 24px rgba(255,102,0,0.08);
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+      filter: drop-shadow(0 2px 8px #ffb38033);
+    }
+    .landing-subtitle {
+      color: #ff6600;
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .landing-actions {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.2rem;
+    }
+    .landing-btn {
+      background: linear-gradient(90deg, #ff6600 85%, #ffae42 100%);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      padding: 1rem 2.2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+      box-shadow: 0 2px 12px rgba(255,102,0,0.13);
+      letter-spacing: 0.5px;
+      outline: none;
+    }
+    .landing-btn:hover {
+      background: linear-gradient(90deg, #181818 60%, #ff6600 100%);
+      color: #fff;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 24px rgba(255,102,0,0.18);
+    }
+    .landing-btn.outline {
+      background: #fff;
+      color: #ff6600;
+      border: none;
+      box-shadow: none;
+      letter-spacing: 0.5px;
+    }
+    .landing-btn.outline:hover {
+      background: #ff6600;
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .landing-title { font-size: 2rem; }
+      .landing-actions { flex-direction: column; gap: 1rem; }
+      .landing-btn { width: 100%; }
+    }
+    .mitadt-corner {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2000;
+    }
+    .mitadt-logo {
+      width: 200px;
+      height: auto;
+      margin-bottom: 0;
+    }
+    @media (max-width: 600px) {
+      .mitadt-corner {
+        top: 8px;
+        left: 8px;
+      }
+      .mitadt-logo {
+        width: 120px;
+      }
+    }
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+    .user-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .user-name {
+      color: #333;
+      font-weight: 600;
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 0.5rem;
+      display: none;
+      min-width: 200px;
+    }
+    .dropdown-menu.show {
+      display: block;
+    }
+    .dropdown-item {
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .dropdown-item:hover {
+      background: #f5f5f5;
+    }
+    .dropdown-divider {
+      height: 1px;
+      background: #eee;
+      margin: 0.5rem 0;
+    }
+    .avatar-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .avatar-modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+    }
+    .avatar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .avatar-option {
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s;
+      border: 2px solid transparent;
+    }
+    .avatar-option:hover {
+      transform: scale(1.05);
+      border-color: #ff6600;
+    }
+    .avatar-option img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .dropdown-item i {
+      width: 20px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="mitadt-corner">
+    <img src="assets/images/LOGO2.png" alt="MIT ADT University Logo" class="mitadt-logo">
+  </div>
+  <div class="landing-container">
+    <div class="landing-title">
+      <span style="font-family: 'Montserrat', sans-serif;">Welcome to <span style="font-weight:900;">BYTE <span style='color:#ff6600;'>&</span> BITE</span></span>
+    </div>
+    <div class="landing-tagline" style="
+      font-size: 1.35rem;
+      color: #181818;
+      font-weight: 600;
+      margin-bottom: 2.2rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(255,102,0,0.06);
+    ">
+      The vibrant, digital home for MIT ADT's Tuck Shop. Order. Enjoy. Repeat.
+    </div>
+    <div class="landing-subtitle">College canteen management system for students and canteen staff</div>
+    <div class="landing-actions">
+      <a href="user/index.html" class="landing-btn">I'm a Student</a>
+      <a href="seller/administration.html" class="landing-btn outline">I'm Canteen Staff</a>
+    </div>
+  </div>
+
+  <script>
+    // Remove any navigation JS related to user profile/login/signup for the landing page
+  </script>
+</body>
+</html> 

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | BYTE & BITE</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0e0 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+    }
+    .profile-container {
+      max-width: 900px;
+      margin: 6rem auto 2rem;
+      padding: 0 1rem;
+    }
+    .profile-header {
+      background: rgba(255,255,255,0.97);
+      border-radius: 24px;
+      padding: 2.5rem 2rem 2rem 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 1.5px 8px rgba(0,0,0,0.04);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(8px);
+    }
+    .profile-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 3px solid #ff6600;
+      box-shadow: 0 2px 12px rgba(255,102,0,0.10);
+      background: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .profile-avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 24px rgba(255,102,0,0.18);
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-avatar .edit-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border-radius: 0 0 50% 50%;
+    }
+    .profile-avatar:hover .edit-overlay {
+      opacity: 1;
+    }
+    .profile-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .profile-name {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+      color: #181818;
+      letter-spacing: 0.5px;
+      word-break: break-word;
+    }
+    .profile-email, .profile-phone {
+      color: #666;
+      margin-bottom: 0.3rem;
+      font-size: 1.08rem;
+      word-break: break-all;
+    }
+    .profile-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 1.2rem;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ff6600;
+    }
+    .stat-label {
+      color: #888;
+      font-size: 0.98rem;
+    }
+    .profile-content {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.2rem;
+    }
+    .profile-sidebar {
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      height: fit-content;
+      backdrop-filter: blur(6px);
+    }
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-item {
+      padding: 0.9rem 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #666;
+      font-size: 1.08rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      margin-bottom: 0.2rem;
+    }
+    .sidebar-item:hover {
+      background: #fff3e0;
+      color: #ff6600;
+    }
+    .sidebar-item.active {
+      background: #ff6600;
+      color: #fff;
+      font-weight: 700;
+    }
+    .sidebar-item i {
+      width: 20px;
+    }
+    .profile-main {
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      padding: 2.2rem 2rem 2rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      min-height: 420px;
+      backdrop-filter: blur(6px);
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #181818;
+      letter-spacing: 0.2px;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #666;
+      font-weight: 500;
+      font-size: 1.05rem;
+    }
+    .form-input {
+      width: 100%;
+      padding: 1rem 1.1rem;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1.08rem;
+      background: #fafafa;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 4px rgba(255,102,0,0.03);
+    }
+    .form-input:focus {
+      border-color: #ff6600;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(255,102,0,0.08);
+    }
+    .btn-save {
+      background: linear-gradient(90deg, #ff6600 85%, #ffae42 100%);
+      color: white;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.08rem;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(255,102,0,0.10);
+      margin-top: 0.5rem;
+    }
+    .btn-save:hover {
+      background: #ff6600;
+      color: #fff;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 24px rgba(255,102,0,0.18);
+    }
+    .avatar-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .avatar-modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+    }
+    .avatar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .avatar-option {
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s;
+      border: 2px solid transparent;
+    }
+    .avatar-option:hover {
+      transform: scale(1.05);
+      border-color: #ff6600;
+    }
+    .avatar-option img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .profile-container { margin-top: 4rem; }
+      .profile-header { flex-direction: column; text-align: center; gap: 1.2rem; }
+      .profile-content { grid-template-columns: 1fr; gap: 1.2rem; }
+      .profile-sidebar { margin-bottom: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .profile-header, .profile-main { padding: 1.1rem; }
+      .profile-avatar { width: 90px; height: 90px; }
+      .profile-name { font-size: 1.2rem; }
+      .profile-sidebar { padding: 1rem 0.5rem; }
+    }
+    .profile-section {
+      background: rgba(255,255,255,0.97);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+      min-height: 220px;
+      transition: box-shadow 0.2s;
+    }
+    .profile-section:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+    .profile-section h2.section-title {
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+      color: #181818;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .profile-section p, .profile-section .empty-placeholder {
+      color: #888;
+      font-size: 1.08rem;
+      margin: 1.5rem 0 0 0;
+      text-align: center;
+    }
+    .empty-placeholder {
+      padding: 2.5rem 0;
+      border-radius: 10px;
+      background: #fafafa;
+      border: 1.5px dashed #eee;
+      font-style: italic;
+      font-size: 1.08rem;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <header class="main-header">
+    <div class="container nav-flex nav-3col">
+      <!-- Logo Left -->
+      <div class="logo">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+          <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        </a>
+      </div>
+      <!-- Nav Center -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <!-- Actions Right -->
+      <div class="nav-actions" id="navActions">
+        <!-- Navigation actions will be dynamically rendered by JS -->
+      </div>
+    </div>
+  </header>
+
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-avatar" onclick="showAvatarSelection()">
+        <img src="" alt="Profile Avatar" id="profileAvatar" onerror="this.style.display='none';document.getElementById('profileInitials').style.display='flex';">
+        <div id="profileInitials" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;background:#ffe0e0;color:#ff6600;font-size:2.8rem;font-weight:800;position:absolute;top:0;left:0;border-radius:50%;">
+          <!-- Initials will be set by JS -->
+        </div>
+        <div class="edit-overlay">
+          <i class="fas fa-camera"></i> Change Photo
+        </div>
+      </div>
+      <div class="profile-info">
+        <h1 class="profile-name" id="profileName">Loading...</h1>
+        <div class="profile-email" id="profileEmail">Loading...</div>
+        <div class="profile-phone" id="profilePhone">Loading...</div>
+        <div class="profile-stats">
+          <div class="stat-item">
+            <div class="stat-value" id="totalOrders">0</div>
+            <div class="stat-label">Total Orders</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="totalSpent">₹0</div>
+            <div class="stat-label">Total Spent</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="memberSince">0</div>
+            <div class="stat-label">Days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <div class="profile-sidebar">
+        <ul class="sidebar-menu">
+          <li class="sidebar-item active" onclick="showSection('personal')">
+            <i class="fas fa-user"></i> Personal Information
+          </li>
+          <li class="sidebar-item" onclick="showSection('orders')">
+            <i class="fas fa-shopping-bag"></i> Order History
+          </li>
+          <li class="sidebar-item" onclick="showSection('favorites')">
+            <i class="fas fa-heart"></i> Favorite Items
+          </li>
+          <li class="sidebar-item" onclick="showSection('addresses')">
+            <i class="fas fa-map-marker-alt"></i> Saved Addresses
+          </li>
+          <li class="sidebar-item" onclick="showSection('payments')">
+            <i class="fas fa-credit-card"></i> Payment Methods
+          </li>
+          <li class="sidebar-item" onclick="showSection('notifications')">
+            <i class="fas fa-bell"></i> Notifications
+          </li>
+        </ul>
+      </div>
+
+      <div class="profile-main">
+        <div id="personalSection" class="profile-section">
+          <h2 class="section-title">Personal Information</h2>
+          <form id="personalForm" onsubmit="updatePersonalInfo(event)">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" id="fullName" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" id="email" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" id="phone" required>
+            </div>
+            <button type="submit" class="btn-save">Save Changes</button>
+          </form>
+        </div>
+
+        <div id="ordersSection" class="profile-section" style="display: none;">
+          <h2 class="section-title">Order History</h2>
+          <div id="ordersList">
+            <!-- Orders will be loaded here -->
+          </div>
+        </div>
+
+        <div id="favoritesSection" class="profile-section" style="display: none;">
+          <h2 class="section-title">Favorite Items</h2>
+          <div id="favoritesList">
+            <!-- Favorites will be loaded here -->
+          </div>
+        </div>
+
+        <div id="addressesSection" class="profile-section" style="display: none;">
+          <h2 class="section-title">Saved Addresses</h2>
+          <div id="addressesList">
+            <!-- Addresses will be loaded here -->
+          </div>
+        </div>
+
+        <div id="paymentsSection" class="profile-section" style="display: none;">
+          <h2 class="section-title">Payment Methods</h2>
+          <div id="paymentsList">
+            <!-- Payment methods will be loaded here -->
+          </div>
+        </div>
+
+        <div id="notificationsSection" class="profile-section" style="display: none;">
+          <h2 class="section-title">Notification Settings</h2>
+          <div id="notificationsList">
+            <!-- Notification settings will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        <p>Delicious food at your doorstep. Order online for fast pickup at the Tuck Shop.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Tuck Shop Lane, MIT ADT University</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: info@bytebite.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p>Sat: 9:00 AM - 10:00 PM</p>
+        <p>Sun: 10:00 AM - 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BYTE & BITE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/avatars.js"></script>
+  <script src="../assets/js/cart-init.js"></script>
+  <script>
+    // Check authentication
+    function checkAuth() {
+      const accessToken = localStorage.getItem('access');
+      if (!accessToken) {
+        window.location.href = 'login.html';
+        return;
+      }
+      loadUserProfile();
+    }
+
+    // Show avatar selection modal
+    function showAvatarSelection() {
+      const modal = document.createElement('div');
+      modal.className = 'avatar-modal';
+      modal.innerHTML = `
+        <div class="avatar-modal-content">
+          <h3 style="margin-bottom: 1rem; color: #333;">Choose Your Avatar</h3>
+          <div class="avatar-grid">
+            ${DEFAULT_AVATARS.map((avatar, index) => `
+              <div class="avatar-option" onclick="selectAvatar('${avatar}')">
+                <img src="${avatar}" alt="Avatar ${index + 1}">
+              </div>
+            `).join('')}
+          </div>
+          <button class="btn-save" onclick="closeAvatarModal()" style="margin-top: 1rem;">Close</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+
+    // Select avatar
+    function selectAvatar(avatarUrl) {
+      const userData = JSON.parse(localStorage.getItem('user') || '{}');
+      userData.avatar = avatarUrl;
+      localStorage.setItem('user', JSON.stringify(userData));
+      
+      // Update avatar in profile
+      const profileAvatar = document.getElementById('profileAvatar');
+      const profileInitials = document.getElementById('profileInitials');
+      if (avatarUrl) {
+        profileAvatar.src = avatarUrl;
+        profileAvatar.style.display = 'block';
+        profileInitials.style.display = 'none';
+      } else {
+        profileAvatar.src = '';
+        profileAvatar.style.display = 'none';
+        // Set initials
+        let initials = '';
+        if (userData.fullname) {
+          const parts = userData.fullname.trim().split(' ');
+          initials = parts[0][0].toUpperCase();
+          if (parts.length > 1) initials += parts[1][0].toUpperCase();
+        } else {
+          initials = 'U';
+        }
+        profileInitials.textContent = initials;
+        profileInitials.style.display = 'flex';
+      }
+      
+      // Update avatar in navigation
+      const navAvatar = document.querySelector('.profile-pic');
+      if (navAvatar) {
+        navAvatar.src = avatarUrl;
+      }
+      
+      closeAvatarModal();
+    }
+
+    // Close avatar modal
+    function closeAvatarModal() {
+      const modal = document.querySelector('.avatar-modal');
+      if (modal) {
+        modal.remove();
+      }
+    }
+
+    // Load user profile
+    function loadUserProfile() {
+      const userData = JSON.parse(localStorage.getItem('user') || '{}');
+      
+      // Update profile header
+      document.getElementById('profileName').textContent = userData.fullname || 'User';
+      document.getElementById('profileEmail').textContent = userData.email || 'No email set';
+      document.getElementById('profilePhone').textContent = userData.phone || 'No phone set';
+      
+      // Update avatar
+      const avatarUrl = getUserAvatar(userData);
+      const profileAvatar = document.getElementById('profileAvatar');
+      const profileInitials = document.getElementById('profileInitials');
+      if (avatarUrl) {
+        profileAvatar.src = avatarUrl;
+        profileAvatar.style.display = 'block';
+        profileInitials.style.display = 'none';
+      } else {
+        profileAvatar.src = '';
+        profileAvatar.style.display = 'none';
+        // Set initials
+        let initials = '';
+        if (userData.fullname) {
+          const parts = userData.fullname.trim().split(' ');
+          initials = parts[0][0].toUpperCase();
+          if (parts.length > 1) initials += parts[1][0].toUpperCase();
+        } else {
+          initials = 'U';
+        }
+        profileInitials.textContent = initials;
+        profileInitials.style.display = 'flex';
+      }
+      
+      // Update form fields
+      document.getElementById('fullName').value = userData.fullname || '';
+      document.getElementById('email').value = userData.email || '';
+      document.getElementById('phone').value = userData.phone || '';
+      
+      // Load other sections
+      loadOrders();
+      loadFavorites();
+      loadAddresses();
+      loadPayments();
+      loadNotifications();
+    }
+
+    // Show section
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.profile-section').forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      // Show selected section
+      document.getElementById(sectionId + 'Section').style.display = 'block';
+      
+      // Update active menu item
+      document.querySelectorAll('.sidebar-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      event.currentTarget.classList.add('active');
+    }
+
+    // Update personal information
+    function updatePersonalInfo(event) {
+      event.preventDefault();
+      
+      const userData = JSON.parse(localStorage.getItem('user') || '{}');
+      userData.fullname = document.getElementById('fullName').value;
+      userData.email = document.getElementById('email').value;
+      userData.phone = document.getElementById('phone').value;
+      
+      localStorage.setItem('user', JSON.stringify(userData));
+      loadUserProfile();
+      
+      alert('Profile updated successfully!');
+    }
+
+    // Load orders
+    function loadOrders() {
+      document.getElementById('ordersList').innerHTML = '<div class="empty-placeholder">No orders yet</div>';
+    }
+
+    // Load favorites
+    function loadFavorites() {
+      document.getElementById('favoritesList').innerHTML = '<div class="empty-placeholder">No favorite items yet</div>';
+    }
+
+    // Load addresses
+    function loadAddresses() {
+      document.getElementById('addressesList').innerHTML = '<div class="empty-placeholder">No saved addresses yet</div>';
+    }
+
+    // Load payments
+    function loadPayments() {
+      document.getElementById('paymentsList').innerHTML = '<div class="empty-placeholder">No payment methods saved yet</div>';
+    }
+
+    // Load notifications
+    function loadNotifications() {
+      document.getElementById('notificationsList').innerHTML = '<div class="empty-placeholder">No notification settings yet</div>';
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', checkAuth);
+
+    function updateUserNav() {
+      const navActions = document.getElementById('navActions');
+      const accessToken = localStorage.getItem('access');
+      const userData = JSON.parse(localStorage.getItem('user') || '{}');
+      let html = '';
+      let cartCount = 0;
+      try {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      } catch {}
+      html += `<a href="cart.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">${cartCount}</span>
+      </a>`;
+      if (accessToken) {
+        // Show profile button and logout
+        const avatar = userData.avatar || '../assets/images/user-avatar.png';
+        html += `<a href="profile.html" class="profile-btn"><img src="${avatar}" alt="Profile" class="profile-pic"></a>`;
+        html += `<button class="btn btn-primary nav-signin" id="logoutBtn" style="margin-left:10px;">Logout</button>`;
+      } else {
+        // Show login/signup
+        html += `<a href="login.html" class="btn btn-primary nav-signin">Login/Signup</a>`;
+      }
+      navActions.innerHTML = html;
+      // Add logout event
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          localStorage.removeItem('access');
+          localStorage.removeItem('refresh');
+          localStorage.removeItem('user');
+          window.location.href = 'login.html';
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', updateUserNav);
+  </script>
+
+  <style>
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+      border: 2px solid #ff6600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .profile-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</body>
+</html> 

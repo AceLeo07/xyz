@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | Byte & Bite - MIT ADT University</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+      border: 2px solid #ff6600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .profile-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- HERO SECTION ENHANCEMENTS --- */
+    .menu-hero {
+      background: #fff;
+      padding: 70px 0 40px 0;
+      text-align: center;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 4px 32px #0001;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .menu-hero h1 {
+      font-size: 3.5rem;
+      font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #181818;
+      margin-bottom: 0.7rem;
+      margin-top: 0;
+      text-shadow: 0 4px 24px #b3c6ff33;
+    }
+    .menu-hero p {
+      font-size: 1.35rem;
+      color: #222;
+      font-weight: 500;
+      margin-bottom: 2.2rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px #b3c6ff22;
+    }
+    .menu-hero .divider {
+      width: 80px;
+      height: 6px;
+      background: linear-gradient(90deg, #ff6600 0%, #4285ff 100%);
+      border-radius: 3px;
+      margin: 0 auto 24px auto;
+      box-shadow: 0 2px 8px #ff660033;
+    }
+    @media (max-width: 600px) {
+      .menu-hero h1 { font-size: 2.1rem; }
+      .menu-hero p { font-size: 1rem; }
+      .menu-hero { padding: 40px 0 20px 0; }
+    }
+  </style>
+</head>
+<body style="margin-top: 90px;">
+  <!-- Header/Navbar -->
+  <header class="main-header">
+    <div class="container nav-flex nav-3col">
+      <!-- Logo Left -->
+      <div class="logo">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+          <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        </a>
+      </div>
+      <!-- Nav Center -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link active">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <!-- Actions Right -->
+      <div class="nav-actions" id="navActions">
+        <!-- Navigation actions will be dynamically rendered by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Hero -->
+  <section class="menu-hero">
+    <div class="container">
+      <h1>Our Menu</h1>
+      <div class="divider"></div>
+      <p>Discover delicious meals prepared fresh daily at the Tuck Shop</p>
+    </div>
+  </section>
+
+  <!-- Menu Content -->
+  <section class="menu-content">
+    <div class="container">
+      <!-- Search and Filters -->
+      <div class="menu-controls">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search for food...">
+        </div>
+        <div class="menu-filters" id="filter-btns">
+          <!-- Filter buttons will be rendered here by JS -->
+        </div>
+      </div>
+
+      <!-- Menu Grid: 3 items per row, 9 items per page -->
+      <div class="menu-grid" id="dynamic-menu-grid">
+        <!-- Menu items will be rendered here by JS -->
+      </div>
+      <!-- Pagination Dots -->
+      <div class="menu-pagination">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <img src="../assets/images/logo.png" alt="Byte & Bite Logo" class="logo-img">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-accent">&BITE</span></span>
+        <p>Delicious food at your doorstep. Order online for fast pickup at the Tuck Shop.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Tuck Shop Lane, MIT ADT University</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: info@bytebite.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p>Sat: 9:00 AM - 10:00 PM</p>
+        <p>Sun: 10:00 AM - 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BYTE & BITE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/menu.js"></script>
+  <script src="../assets/js/cart-init.js"></script>
+  <script>
+    // Modern menu search and filter logic with placeholder support
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.querySelector('.search-bar input');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const menuGrid = document.querySelector('.menu-grid');
+      const menuCards = Array.from(document.querySelectorAll('.menu-card'));
+
+      // Helper to get text content of a menu card
+      function getCardText(card) {
+        return (
+          card.querySelector('h3').textContent + ' ' +
+          card.querySelector('p').textContent
+        ).toLowerCase();
+      }
+
+      // Helper to get category from filter button
+      function getCardCategory(card) {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        if (name.includes('burger')) return 'burgers';
+        if (name.includes('pizza')) return 'pizzas';
+        if (name.includes('salad')) return 'salads';
+        if (name.includes('wrap')) return 'wraps';
+        if (name.includes('pasta')) return 'main';
+        if (name.includes('sandwich')) return 'sides';
+        if (name.includes('fries')) return 'sides';
+        if (name.includes('dessert') || name.includes('brownie')) return 'desserts';
+        if (name.includes('drink') || name.includes('coffee')) return 'drinks';
+        return 'main';
+      }
+
+      let activeFilter = 'all';
+
+      function removePlaceholders() {
+        menuGrid.querySelectorAll('.menu-card.placeholder').forEach(el => el.remove());
+      }
+
+      function filterMenu() {
+        const search = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+        menuCards.forEach(card => {
+          const text = getCardText(card);
+          const category = getCardCategory(card);
+          const matchesSearch = text.includes(search);
+          const matchesFilter = (activeFilter === 'all' || category === activeFilter);
+          const show = matchesSearch && matchesFilter;
+          card.style.display = show ? '' : 'none';
+          if (show) visibleCount++;
+        });
+        // Remove old placeholders
+        removePlaceholders();
+        // Add placeholders if needed
+        const remainder = visibleCount % 3;
+        if (remainder !== 0 && visibleCount !== 0) {
+          for (let i = 0; i < 3 - remainder; i++) {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'menu-card placeholder';
+            placeholder.style.visibility = 'hidden';
+            placeholder.style.pointerEvents = 'none';
+            menuGrid.appendChild(placeholder);
+          }
+        }
+      }
+
+      // Search input event
+      searchInput.addEventListener('input', filterMenu);
+
+      // Filter button click event
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          activeFilter = this.dataset.filter;
+          filterMenu();
+        });
+      });
+
+      // Initial call
+      filterMenu();
+    });
+
+    // Render menu items from localStorage
+    function renderMenu() {
+      const grid = document.getElementById('dynamic-menu-grid');
+      grid.innerHTML = '';
+      const menuItems = JSON.parse(localStorage.getItem('menuItems') || '[]');
+      if (!menuItems.length) {
+        grid.innerHTML = '<div style="padding:2em;text-align:center;color:#888;">No menu items available.</div>';
+        return;
+      }
+      menuItems.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.setAttribute('data-category', item.category || '');
+        card.innerHTML = `
+          <div class="menu-img-wrap">
+            <img src="${item.image || 'https://via.placeholder.com/120'}" alt="${item.name}">
+          </div>
+          <h3>${item.name}</h3>
+          <p>${item.description || ''}</p>
+          <div class="menu-card-bottom">
+            <span class="menu-price">₹${parseFloat(item.price).toFixed(2)}</span>
+            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+    renderMenu();
+
+    function updateUserNav() {
+      const navActions = document.getElementById('navActions');
+      const accessToken = localStorage.getItem('access');
+      const userData = JSON.parse(localStorage.getItem('user') || '{}');
+      let html = '';
+      // Cart count from localStorage
+      let cartCount = 0;
+      try {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      } catch {}
+      html += `<a href="cart.html" class="cart-icon${window.location.pathname.includes('cart.html') ? ' active' : ''}">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">${cartCount}</span>
+      </a>`;
+      if (accessToken) {
+        // Show profile button
+        const avatar = userData.avatar || '../assets/images/user-avatar.png';
+        html += `<a href="profile.html" class="profile-btn"><img src="${avatar}" alt="Profile" class="profile-pic"></a>`;
+      } else {
+        // Show login/signup
+        html += `<a href="login.html" class="btn btn-primary nav-signin">Login/Signup</a>`;
+      }
+      navActions.innerHTML = html;
+    }
+    document.addEventListener('DOMContentLoaded', updateUserNav);
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'cart') updateUserNav();
+    });
+  </script>
+</body>
+</html> 

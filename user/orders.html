@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Byte & Bite - MIT ADT University</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+      border: 2px solid #ff6600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .profile-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <header class="main-header">
+    <div class="container nav-flex nav-3col">
+      <!-- Logo Left -->
+      <div class="logo">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+          <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        </a>
+      </div>
+      <!-- Nav Center -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <!-- Actions Right -->
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="btn btn-primary nav-signin">Login/Signup</a>
+        <a href="profile.html" class="profile-btn">
+          <img src="../assets/images/user-avatar.png" alt="Profile" class="profile-pic" onerror="this.src='../assets/images/default-avatar.png'">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Orders Section -->
+  <section class="orders-section" style="margin-top: 4.5rem;">
+    <div class="container">
+      <p style="color:#757575; font-size:1.08rem; margin-bottom:2rem;">You will receive a notification when your order is ready for pickup at the counter. Please check your order status below.</p>
+      <!-- Order Tabs -->
+      <div class="order-tabs">
+        <button class="tab-btn active" data-tab="current">Current Orders</button>
+        <button class="tab-btn" data-tab="past">Past Orders</button>
+      </div>
+
+      <!-- Current Orders -->
+      <div class="orders-container" id="current-orders">
+        <div class="order-card">
+          <div class="order-header">
+            <div class="order-info">
+              <h3>Order #12345</h3>
+              <p class="order-date">Placed on: March 15, 2024 - 12:30 PM</p>
+            </div>
+            <div class="order-status preparing">
+              <span class="status-tag preparing"><i class="fas fa-clock"></i> Preparing</span>
+            </div>
+          </div>
+          <div class="order-items">
+            <div class="order-item">
+              <img src="../assets/images/menu/pasta.jpg" alt="Pasta Primavera">
+              <div class="item-details">
+                <h4>Pasta Primavera</h4>
+                <p>Quantity: 1</p>
+                <span class="item-price">₹120</span>
+              </div>
+            </div>
+            <div class="order-item">
+              <img src="../assets/images/menu/coffee.jpg" alt="Special Coffee">
+              <div class="item-details">
+                <h4>Special Coffee</h4>
+                <p>Quantity: 1</p>
+                <span class="item-price">₹60</span>
+              </div>
+            </div>
+          </div>
+          <div class="order-footer">
+            <div class="order-total">
+              <span>Total Amount:</span>
+              <span class="total-amount">₹189</span>
+            </div>
+            <div class="order-actions">
+              <span class="pickup-instruction">Please wait for your pickup notification.</span>
+            </div>
+          </div>
+        </div>
+        <div class="order-card">
+          <div class="order-header">
+            <div class="order-info">
+              <h3>Order #12346</h3>
+              <p class="order-date">Placed on: March 15, 2024 - 12:45 PM</p>
+            </div>
+            <div class="order-status ready">
+              <span class="status-tag ready"><i class="fas fa-bell"></i> Ready for Pickup</span>
+            </div>
+          </div>
+          <div class="order-items">
+            <div class="order-item">
+              <img src="../assets/images/menu/pizza.jpg" alt="Pizza Margherita">
+              <div class="item-details">
+                <h4>Pizza Margherita</h4>
+                <p>Quantity: 1</p>
+                <span class="item-price">₹180</span>
+              </div>
+            </div>
+          </div>
+          <div class="order-footer">
+            <div class="order-total">
+              <span>Total Amount:</span>
+              <span class="total-amount">₹180</span>
+            </div>
+            <div class="order-actions">
+              <span class="pickup-instruction" style="color:#27ae60; font-weight:600;">Your order is ready! Please collect it from the counter.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Orders -->
+      <div class="orders-container hidden" id="past-orders">
+        <div class="order-card collected">
+          <div class="order-header">
+            <div class="order-info">
+              <h3>Order #12344</h3>
+              <p class="order-date">March 14, 2024 - 2:15 PM</p>
+            </div>
+            <div class="order-status collected">
+              <span class="status-tag collected"><i class="fas fa-check-circle"></i> Collected</span>
+            </div>
+          </div>
+          <div class="order-items">
+            <div class="order-item">
+              <img src="../assets/images/menu/sandwich.jpg" alt="Club Sandwich">
+              <div class="item-details">
+                <h4>Club Sandwich</h4>
+                <p>Quantity: 2</p>
+                <span class="item-price">₹160</span>
+              </div>
+            </div>
+          </div>
+          <div class="order-footer">
+            <div class="order-total">
+              <span>Total Amount:</span>
+              <span class="total-amount">₹168</span>
+            </div>
+            <div class="order-actions">
+              <span class="pickup-instruction" style="color:#757575;">Order collected. Enjoy your meal!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        <p>Delicious food at your doorstep. Order online for fast pickup at the Tuck Shop.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Tuck Shop Lane, MIT ADT University</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: info@bytebite.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p>Sat: 9:00 AM - 10:00 PM</p>
+        <p>Sun: 10:00 AM - 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BYTE & BITE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/orders.js"></script>
+  <script src="../assets/js/cart-init.js"></script>
+</body>
+</html> 

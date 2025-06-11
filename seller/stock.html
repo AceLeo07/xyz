@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BYTE&BITE - Stock Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <link rel="stylesheet" href="../assets/css/stock.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="./dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+        <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+        <li><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+        <li><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+        <li class="active"><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+        <li><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+        <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+        <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="./administration.html" id="logout-btn"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <div class="header-row">
+        <div class="header-center" style="width:100%;text-align:center;">
+          <span class="header-title">Stock Management</span>
+        </div>
+      </div>
+    </header>
+    <section class="stock-section">
+      <div class="stock-header">
+        <div class="stock-actions">
+          <div class="search-box">
+            <input type="text" id="stock-search" placeholder="Search stock...">
+            <i class="fa fa-search"></i>
+          </div>
+          <div class="stock-filters">
+            <select id="stock-filter">
+              <option value="all">All Items</option>
+              <option value="low">Low Stock</option>
+              <option value="out">Out of Stock</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="stock-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Menu Item</th>
+              <th>Category</th>
+              <th>Current Stock</th>
+              <th>Low Stock Alert</th>
+              <th>Status</th>
+              <th>Last Updated</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="stock-table-body">
+            <!-- Stock items will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Update Stock Modal -->
+  <div id="stock-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Update Stock</h3>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="stock-form">
+          <input type="hidden" id="stock-id">
+          
+          <div class="form-section">
+            <div class="section-title">
+              <i class="fas fa-info-circle"></i>
+              <h4>Item Details</h4>
+            </div>
+            <div class="form-group">
+              <label for="stock-name">Menu Item</label>
+              <input type="text" id="stock-name" readonly>
+            </div>
+            <div class="form-group">
+              <label for="stock-category">Category</label>
+              <input type="text" id="stock-category" readonly>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="section-title">
+              <i class="fas fa-boxes"></i>
+              <h4>Stock Information</h4>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="stock-qty">Current Stock</label>
+                <div class="input-with-icon">
+                  <input type="number" id="stock-qty" min="0" required>
+                  <i class="fas fa-hashtag"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="stock-low">Low Stock Alert</label>
+                <div class="input-with-icon">
+                  <input type="number" id="stock-low" min="0" required>
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="section-title">
+              <i class="fas fa-sticky-note"></i>
+              <h4>Update Notes</h4>
+            </div>
+            <div class="form-group">
+              <label for="stock-note">Add a note about this stock update</label>
+              <div class="textarea-container">
+                <textarea id="stock-note" placeholder="Example: Received new shipment, adjusted for daily sales..."></textarea>
+                <i class="fas fa-pen"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" onclick="stockManager.closeStockModal()">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+            <button type="submit" class="save-btn">
+              <i class="fas fa-save"></i> Update Stock
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/stock.js"></script>
+</body>
+</html> 

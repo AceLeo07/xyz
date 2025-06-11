@@ -1,0 +1,113 @@
+/* Settings Page Custom Styles */
+.settings-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 32px 0;
+    justify-content: center;
+    background: #f7f7fa;
+  }
+  
+  .settings-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 32px 28px 24px 28px;
+    min-width: 320px;
+    max-width: 420px;
+    flex: 1 1 350px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .settings-card h3 {
+    font-size: 1.25rem;
+    color: #ff6600;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .settings-form .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .settings-form label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .settings-form .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #fafbfc;
+    margin-top: 2px;
+  }
+  
+  .settings-form .form-input[type='file'] {
+    padding: 6px 0;
+    background: none;
+  }
+  
+  .settings-form .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .settings-form .submit-btn {
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .settings-form .submit-btn:hover {
+    background: #e65c00;
+  }
+  
+  .support-info {
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  .support-info ul {
+    padding-left: 18px;
+    margin: 8px 0 8px 0;
+  }
+  
+  .support-info a {
+    color: #ff6600;
+    text-decoration: none;
+  }
+  
+  .support-info a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 900px) {
+    .settings-section {
+      flex-direction: column;
+      gap: 18px;
+      padding: 18px 0;
+    }
+    .settings-card {
+      max-width: 98vw;
+      min-width: unset;
+      padding: 18px 8vw 18px 8vw;
+    }
+  }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Signup | Byte & Bite</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #e3f0ff 0%, #c9eaff 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .seller-signup-container {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #1976d233;
+      border: 2px solid #1976d2;
+      max-width: 400px;
+      width: 100%;
+      padding: 2.5rem 2rem 2rem 2rem;
+      text-align: center;
+    }
+    .seller-badge {
+      display: inline-block;
+      background: #1976d2;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 0.3rem 1.2rem;
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px #1976d233;
+    }
+    .seller-signup-title {
+      color: #1976d2;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    .seller-signup-desc {
+      color: #1976d2;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+    label {
+      font-weight: 600;
+      color: #1976d2;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1.5px solid #1976d2;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+      box-sizing: border-box;
+    }
+    .btn-primary {
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.8rem 2.2rem;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover {
+      background: #125ea2;
+    }
+    .btn-link {
+      background: none;
+      border: none;
+      color: #1976d2;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      text-decoration: underline;
+    }
+    #error-message {
+      color: #d32f2f;
+      margin-bottom: 10px;
+      display: none;
+      text-align: left;
+    }
+    .switch-link {
+      margin-top: 1.2rem;
+      color: #1976d2;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="seller-signup-container">
+    <div class="seller-badge"><i class="fas fa-store"></i> Seller Portal</div>
+    <div class="seller-signup-title">Seller Sign Up</div>
+    <div class="seller-signup-desc">Create your seller account to manage your menu and orders.</div>
+    <div id="error-message"></div>
+    <div id="signup-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Choose a username">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Or enter your phone number">
+      </div>
+      <button type="button" onclick="sendOTP()" class="btn-primary">Send OTP</button>
+    </div>
+    <div id="otp-form" style="display: none;">
+      <div class="form-group">
+        <label for="otp">Enter OTP</label>
+        <input type="text" id="otp" name="otp" placeholder="Enter OTP">
+      </div>
+      <button type="button" onclick="verifyOTP()" class="btn-primary">Verify OTP</button>
+      <button type="button" onclick="resendOTP()" class="btn-link">Resend OTP</button>
+    </div>
+    <div class="switch-link" onclick="window.location.href='login.html'">Already have an account? Login</div>
+  </div>
+  <script>
+    let userId = null;
+    function showError(message) {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+    }
+    function clearError() {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = '';
+      errorDiv.style.display = 'none';
+    }
+    async function sendOTP() {
+      clearError();
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      if (!username || (!email && !phone)) {
+        showError('Please fill in all required fields');
+        return;
+      }
+      try {
+        const response = await fetch('http://localhost:5000/api/auth/register/initiate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: username, email: email, phone_number: phone, role: 'seller' })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          userId = data.user_id;
+          document.getElementById('signup-form').style.display = 'none';
+          document.getElementById('otp-form').style.display = 'block';
+        } else {
+          showError(data.error || 'Failed to send OTP');
+        }
+      } catch (error) {
+        showError('Error sending OTP. Please try again.');
+      }
+    }
+    async function verifyOTP() {
+      clearError();
+      const otp = document.getElementById('otp').value;
+      if (!otp || !userId) {
+        showError('Please enter the OTP');
+        return;
+      }
+      try {
+        const response = await fetch('http://localhost:5000/api/auth/register/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: userId, otp: otp })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          localStorage.setItem('token', data.access_token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          window.location.href = 'dashboard.html';
+        } else {
+          showError(data.error || 'Invalid OTP');
+        }
+      } catch (error) {
+        showError('Error verifying OTP. Please try again.');
+      }
+    }
+    async function resendOTP() {
+      await sendOTP();
+    }
+    // Auto-login if token exists
+    window.onload = function() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        window.location.href = 'dashboard.html';
+      }
+    }
+  </script>
+</body>
+</html> 

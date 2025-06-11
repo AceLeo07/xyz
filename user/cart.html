@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Byte & Bite - MIT ADT University</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <header class="main-header">
+    <div class="container nav-flex nav-3col">
+      <div class="logo">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+          <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <div class="nav-actions" id="navActions">
+        <!-- Navigation actions will be dynamically rendered by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="cart-section">
+    <div class="container cart-content">
+      <!-- Cart Items -->
+      <div class="cart-items">
+        <div class="cart-items-summary" style="font-size:1.15rem; font-weight:700; color:#ff6600; margin-bottom:1.2rem;">
+          Items in Cart: <span id="cart-total-qty">0</span>
+        </div>
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Classic Burger" class="cart-item-img">
+          <div class="cart-item-details">
+            <h3>Classic Burger</h3>
+            <p>Juicy beef patty with lettuce, tomato, and special sauce</p>
+            <div class="cart-item-price">₹120.00</div>
+          </div>
+          <div class="cart-item-quantity">
+            <button class="quantity-btn minus">-</button>
+            <input type="number" value="1" min="1" max="10" readonly>
+            <button class="quantity-btn plus">+</button>
+          </div>
+          <button class="remove-item"><i class="fas fa-trash"></i></button>
+        </div>
+
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Margherita Pizza" class="cart-item-img">
+          <div class="cart-item-details">
+            <h3>Margherita Pizza</h3>
+            <p>Traditional pizza with tomato sauce, mozzarella, and basil</p>
+            <div class="cart-item-price">₹180.00</div>
+          </div>
+          <div class="cart-item-quantity">
+            <button class="quantity-btn minus">-</button>
+            <input type="number" value="2" min="1" max="10" readonly>
+            <button class="quantity-btn plus">+</button>
+          </div>
+          <button class="remove-item"><i class="fas fa-trash"></i></button>
+        </div>
+
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Veggie Stir Fry" class="cart-item-img">
+          <div class="cart-item-details">
+            <h3>Veggie Stir Fry</h3>
+            <p>Fresh vegetables stir-fried with tofu and served with rice</p>
+            <div class="cart-item-price">₹150.00</div>
+          </div>
+          <div class="cart-item-quantity">
+            <button class="quantity-btn minus">-</button>
+            <input type="number" value="1" min="1" max="10" readonly>
+            <button class="quantity-btn plus">+</button>
+          </div>
+          <button class="remove-item"><i class="fas fa-trash"></i></button>
+        </div>
+
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Chocolate Brownie" class="cart-item-img">
+          <div class="cart-item-details">
+            <h3>Chocolate Brownie</h3>
+            <p>Rich chocolate brownie with vanilla ice cream</p>
+            <div class="cart-item-price">₹80.00</div>
+          </div>
+          <div class="cart-item-quantity">
+            <button class="quantity-btn minus">-</button>
+            <input type="number" value="1" min="1" max="10" readonly>
+            <button class="quantity-btn plus">+</button>
+          </div>
+          <button class="remove-item"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div class="summary-item">
+          <span>Subtotal</span>
+          <span>₹32.97</span>
+        </div>
+        <div class="summary-item">
+          <span>GST (5%)</span>
+          <span>₹1.65</span>
+        </div>
+        <div class="summary-item total">
+          <span>Total</span>
+          <span>₹34.62</span>
+        </div>
+        <div class="pickup-time">
+          <h3 style="font-size:1.1rem; font-weight:700; color:#181818; margin-bottom:0.5rem;">Pickup Time</h3>
+          <select class="pickup-select">
+            <option value="15">15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">1 hour</option>
+          </select>
+        </div>
+        <button class="btn checkout-btn">Proceed to Checkout</button>
+        <a href="menu.html" class="continue-shopping">
+          <i class="fas fa-arrow-left"></i> Continue Shopping
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        <p>Delicious food at your doorstep. Order online for fast pickup at the Tuck Shop.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Tuck Shop Lane, MIT ADT University</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: info@bytebite.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p>Sat: 9:00 AM - 10:00 PM</p>
+        <p>Sun: 10:00 AM - 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BYTE & BITE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/cart.js"></script>
+  <script>
+  function updateUserNav() {
+    const navActions = document.getElementById('navActions');
+    const accessToken = localStorage.getItem('access');
+    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    let html = '';
+    // Cart count from localStorage
+    let cartCount = 0;
+    try {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    } catch {}
+    html += `<a href="cart.html" class="cart-icon${window.location.pathname.includes('cart.html') ? ' active' : ''}">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">${cartCount}</span>
+    </a>`;
+    if (accessToken) {
+      // Show profile button
+      const avatar = userData.avatar || '../assets/images/user-avatar.png';
+      html += `<a href="profile.html" class="profile-btn"><img src="${avatar}" alt="Profile" class="profile-pic"></a>`;
+    } else {
+      // Show login/signup
+      html += `<a href="login.html" class="btn btn-primary nav-signin">Login/Signup</a>`;
+    }
+    navActions.innerHTML = html;
+  }
+  document.addEventListener('DOMContentLoaded', updateUserNav);
+  // Listen for cart updates from other pages
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'cart') updateUserNav();
+  });
+  </script>
+</body>
+</html> 

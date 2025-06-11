@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BYTE&BITE Seller Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li class="active"><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="./dashboard.html"><i class="fa fa-chart-line"></i> Analytics</a></li>
+        <li><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+        <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+        <li><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+        <li><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+        <li><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+        <li><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+        <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+        <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="./administration.html" id="logout-btn"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <div class="header-row">
+        <div class="header-center" style="width:100%;text-align:center;">
+          <span class="header-title">Canteen Management System</span>
+        </div>
+      </div>
+    </header>
+    <section class="main-dashboard-section">
+      <!-- Full-width interactive dashboard -->
+      <div class="dashboard-interactive full-width">
+        <h3>Order Management</h3>
+        <div class="search-container">
+          <input type="text" id="orderSearch" placeholder="Search by Order ID, Customer, Items..." class="order-search">
+          <select id="statusFilter" class="status-filter">
+            <option value="all">All Status</option>
+            <option value="preparing">Preparing</option>
+            <option value="ready">Ready for Pickup</option>
+            <option value="completed">Completed</option>
+            <option value="onhold">On Hold</option>
+          </select>
+        </div>
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <tr data-order-id="20240315-001">
+              <td>#20240315-001</td>
+              <td>Jane Doe</td>
+              <td>Burger, Fries, Coke</td>
+              <td>₹350</td>
+              <td>12:30 PM</td>
+              <td><span class="status preparing">Preparing</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn ready" onclick="updateOrderStatus('20240315-001', 'ready')" title="Mark as Ready for Pickup">
+                    <i class="fa fa-check"></i> Ready
+                  </button>
+                  <button class="status-btn onhold" onclick="updateOrderStatus('20240315-001', 'onhold')" title="Put Order On Hold">
+                    <i class="fa fa-pause"></i> Hold
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-001', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-001')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-002">
+              <td>#20240315-002</td>
+              <td>John Smith</td>
+              <td>Pizza, Garlic Bread, Pepsi</td>
+              <td>₹450</td>
+              <td>12:45 PM</td>
+              <td><span class="status ready">Ready for Pickup</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn preparing" onclick="updateOrderStatus('20240315-002', 'preparing')" title="Mark as Preparing">
+                    <i class="fa fa-fire"></i> Preparing
+                  </button>
+                  <button class="status-btn onhold" onclick="updateOrderStatus('20240315-002', 'onhold')" title="Put Order On Hold">
+                    <i class="fa fa-pause"></i> Hold
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-002', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-002')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-003">
+              <td>#20240315-003</td>
+              <td>Mary Lee</td>
+              <td>Caesar Salad, Orange Juice</td>
+              <td>₹280</td>
+              <td>1:00 PM</td>
+              <td><span class="status onhold">On Hold</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn preparing" onclick="updateOrderStatus('20240315-003', 'preparing')" title="Mark as Preparing">
+                    <i class="fa fa-fire"></i> Preparing
+                  </button>
+                  <button class="status-btn ready" onclick="updateOrderStatus('20240315-003', 'ready')" title="Mark as Ready for Pickup">
+                    <i class="fa fa-check"></i> Ready
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-003', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-003')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-004">
+              <td>#20240315-004</td>
+              <td>Robert Chen</td>
+              <td>Chicken Rice, Soup, Ice Tea</td>
+              <td>₹320</td>
+              <td>1:15 PM</td>
+              <td><span class="status preparing">Preparing</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn ready" onclick="updateOrderStatus('20240315-004', 'ready')" title="Mark as Ready for Pickup">
+                    <i class="fa fa-check"></i> Ready
+                  </button>
+                  <button class="status-btn onhold" onclick="updateOrderStatus('20240315-004', 'onhold')" title="Put Order On Hold">
+                    <i class="fa fa-pause"></i> Hold
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-004', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-004')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-005">
+              <td>#20240315-005</td>
+              <td>Sarah Wilson</td>
+              <td>Pasta Alfredo, Garlic Bread, Sprite</td>
+              <td>₹420</td>
+              <td>1:30 PM</td>
+              <td><span class="status ready">Ready for Pickup</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn preparing" onclick="updateOrderStatus('20240315-005', 'preparing')" title="Mark as Preparing">
+                    <i class="fa fa-fire"></i> Preparing
+                  </button>
+                  <button class="status-btn onhold" onclick="updateOrderStatus('20240315-005', 'onhold')" title="Put Order On Hold">
+                    <i class="fa fa-pause"></i> Hold
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-005', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-005')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-006">
+              <td>#20240315-006</td>
+              <td>Michael Brown</td>
+              <td>Steak, Mashed Potatoes, Red Wine</td>
+              <td>₹850</td>
+              <td>1:45 PM</td>
+              <td><span class="status onhold">On Hold</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn preparing" onclick="updateOrderStatus('20240315-006', 'preparing')" title="Mark as Preparing">
+                    <i class="fa fa-fire"></i> Preparing
+                  </button>
+                  <button class="status-btn ready" onclick="updateOrderStatus('20240315-006', 'ready')" title="Mark as Ready for Pickup">
+                    <i class="fa fa-check"></i> Ready
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-006', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-006')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-007">
+              <td>#20240315-007</td>
+              <td>Emily Davis</td>
+              <td>Vegetable Stir Fry, Rice, Green Tea</td>
+              <td>₹380</td>
+              <td>2:00 PM</td>
+              <td><span class="status preparing">Preparing</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn ready" onclick="updateOrderStatus('20240315-007', 'ready')" title="Mark as Ready for Pickup">
+                    <i class="fa fa-check"></i> Ready
+                  </button>
+                  <button class="status-btn onhold" onclick="updateOrderStatus('20240315-007', 'onhold')" title="Put Order On Hold">
+                    <i class="fa fa-pause"></i> Hold
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-007', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-007')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-008">
+              <td>#20240315-008</td>
+              <td>David Kim</td>
+              <td>Sushi Platter, Miso Soup, Sake</td>
+              <td>₹720</td>
+              <td>2:15 PM</td>
+              <td><span class="status ready">Ready for Pickup</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn preparing" onclick="updateOrderStatus('20240315-008', 'preparing')" title="Mark as Preparing">
+                    <i class="fa fa-fire"></i> Preparing
+                  </button>
+                  <button class="status-btn onhold" onclick="updateOrderStatus('20240315-008', 'onhold')" title="Put Order On Hold">
+                    <i class="fa fa-pause"></i> Hold
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-008', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-008')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-009">
+              <td>#20240315-009</td>
+              <td>Lisa Anderson</td>
+              <td>Fish & Chips, Coleslaw, Beer</td>
+              <td>₹550</td>
+              <td>2:30 PM</td>
+              <td><span class="status onhold">On Hold</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn preparing" onclick="updateOrderStatus('20240315-009', 'preparing')" title="Mark as Preparing">
+                    <i class="fa fa-fire"></i> Preparing
+                  </button>
+                  <button class="status-btn ready" onclick="updateOrderStatus('20240315-009', 'ready')" title="Mark as Ready for Pickup">
+                    <i class="fa fa-check"></i> Ready
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-009', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-009')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-order-id="20240315-010">
+              <td>#20240315-010</td>
+              <td>James Wilson</td>
+              <td>BBQ Ribs, Corn, Cola</td>
+              <td>₹680</td>
+              <td>2:45 PM</td>
+              <td><span class="status preparing">Preparing</span></td>
+              <td>
+                <div class="order-actions">
+                  <button class="status-btn ready" onclick="updateOrderStatus('20240315-010', 'ready')" title="Mark as Ready for Pickup">
+                    <i class="fa fa-check"></i> Ready
+                  </button>
+                  <button class="status-btn onhold" onclick="updateOrderStatus('20240315-010', 'onhold')" title="Put Order On Hold">
+                    <i class="fa fa-pause"></i> Hold
+                  </button>
+                  <button class="status-btn completed" onclick="updateOrderStatus('20240315-010', 'completed')" title="Mark as Completed">
+                    <i class="fa fa-check-double"></i> Complete
+                  </button>
+                  <button class="status-btn view" onclick="viewOrderDetails('20240315-010')" title="View Details">
+                    <i class="fa fa-eye"></i> View
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Grid with 3 sections below -->
+      <div class="home-grid">
+        <div class="home-card popular-items-card">
+          <h3>Popular Items Today</h3>
+          <div class="popular-items-chart">
+            <canvas id="popularItemsChart"></canvas>
+          </div>
+          <div class="popular-items-stats">
+            <div class="stat-item">
+              <span class="stat-label">Total Orders</span>
+              <span class="stat-value" id="totalOrdersToday">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Top Item</span>
+              <span class="stat-value" id="topItemToday">-</span>
+            </div>
+          </div>
+        </div>
+        <div class="home-card ratings-card">
+          <h3>Customer Ratings & Feedback</h3>
+          <div class="ratings-summary">
+            <div class="overall-rating">
+              <div class="rating-value">4.8</div>
+              <div class="rating-stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-alt"></i>
+              </div>
+              <div class="rating-count">Based on 128 reviews</div>
+            </div>
+            <div class="rating-stats">
+              <div class="rating-bar">
+                <span class="rating-label">5★</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 75%"></div>
+                </div>
+                <span class="rating-percent">75%</span>
+              </div>
+              <div class="rating-bar">
+                <span class="rating-label">4★</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 15%"></div>
+                </div>
+                <span class="rating-percent">15%</span>
+              </div>
+              <div class="rating-bar">
+                <span class="rating-label">3★</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 5%"></div>
+                </div>
+                <span class="rating-percent">5%</span>
+              </div>
+              <div class="rating-bar">
+                <span class="rating-label">2★</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 3%"></div>
+                </div>
+                <span class="rating-percent">3%</span>
+              </div>
+              <div class="rating-bar">
+                <span class="rating-label">1★</span>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 2%"></div>
+                </div>
+                <span class="rating-percent">2%</span>
+              </div>
+            </div>
+          </div>
+          <div class="recent-feedback">
+            <h4>Recent Feedback</h4>
+            <div class="feedback-list" id="feedbackList">
+              <!-- Feedback items will be dynamically added here -->
+            </div>
+        </div>
+        </div>
+      </div>
+    </section>
+    <section id="dashboard-section" class="dashboard-section" style="display:none;">
+      <div class="analytics-section">
+        <h4>Business Overview</h4>
+        <div class="analytics-cards">
+          <div class="analytics-card">
+            <div class="analytics-label">Total Sales</div>
+            <div class="analytics-value" id="analytics-total-sales">₹0.00</div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-label">Total Orders</div>
+            <div class="analytics-value" id="analytics-total-orders">0</div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-label">Avg. Order Value</div>
+            <div class="analytics-value" id="analytics-avg-order">₹0.00</div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-label">Best Day</div>
+            <div class="analytics-value" id="analytics-best-day">-</div>
+          </div>
+        </div>
+        <div class="analytics-periods">
+          <button class="analytics-period-btn active" data-period="day">Day</button>
+          <button class="analytics-period-btn" data-period="week">Week</button>
+          <button class="analytics-period-btn" data-period="month">Month</button>
+          <button class="analytics-period-btn" data-period="quarter">Quarter</button>
+          <button class="analytics-period-btn" data-period="year">Year</button>
+        </div>
+        <div class="analytics-graphs">
+          <div class="analytics-graph">
+            <canvas id="orders-time-chart"></canvas>
+            <div class="analytics-graph-label">Peak Order Times</div>
+          </div>
+          <div class="analytics-graph">
+            <canvas id="top-items-chart"></canvas>
+            <div class="analytics-graph-label">Top Items</div>
+          </div>
+          <div class="analytics-graph">
+            <canvas id="sales-trend-chart"></canvas>
+            <div class="analytics-graph-label">Sales Trend</div>
+          </div>
+          <div class="analytics-graph">
+            <canvas id="order-status-chart"></canvas>
+            <div class="analytics-graph-label">Order Status Distribution</div>
+          </div>
+        </div>
+      </div>
+      <!-- New Sample Values Graph Section -->
+      <div class="sample-values-section">
+        <h4>Sample Values Analysis</h4>
+        <div class="sample-values-container">
+          <div class="sample-values-graph">
+            <canvas id="sampleValuesChart"></canvas>
+          </div>
+          <div class="sample-values-stats">
+            <div class="stat-card">
+              <div class="stat-label">Highest Value</div>
+              <div class="stat-value" id="highestValue">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Average Value</div>
+              <div class="stat-value" id="averageValue">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Value</div>
+              <div class="stat-value" id="totalValue">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Add/Edit Food Modal -->
+    <div id="food-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="close-food-modal">&times;</span>
+        <h3 id="food-modal-title">Add/Edit Food Item</h3>
+        <form id="food-form">
+          <input type="hidden" id="food-id">
+          <label>Food Name</label>
+          <input type="text" id="food-name" required>
+          <label>Details</label>
+          <textarea id="food-details" required></textarea>
+          <label>Price</label>
+          <input type="number" id="food-price" min="0" step="0.01" required>
+          <label>Daily Quantity</label>
+          <input type="number" id="food-qty" min="0" required>
+          <label>Image</label>
+          <input type="file" id="food-img" accept="image/*">
+          <button type="submit" id="save-food-btn">Save</button>
+        </form>
+      </div>
+    </div>
+    <div id="toast" class="toast"></div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/home.js"></script>
+</body>
+</html> 

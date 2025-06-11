@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Byte & Bite | Tuck Shop - MIT ADT University</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <header class="main-header">
+    <div class="container nav-flex nav-3col">
+      <!-- Logo Left -->
+      <div class="logo">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+          <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        </a>
+      </div>
+      <!-- Nav Center -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <!-- Actions Right -->
+      <div class="nav-actions" id="navActions">
+        <!-- Navigation actions will be dynamically rendered by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-flex">
+      <div class="hero-content">
+        <h1 class="hero-title">Delicious Food,<br><span class="accent">Delivered Fast</span></h1>
+        <p class="hero-desc">Order your favorite meals online and enjoy quick pickup at the Tuck Shop. From burgers to salads, we've got your cravings covered.</p>
+        <div class="hero-actions">
+          <a href="menu.html" class="btn btn-primary">Browse Menu</a>
+          <a href="about.html" class="btn btn-outline">Learn More</a>
+        </div>
+        <div class="hero-rating">
+          <span class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          <span class="rating-text">500+ Happy Customers</span>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Delicious Food" class="main-hero-img">
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section" id="about">
+    <div class="container">
+      <h2 class="section-title">Why Choose BYTE & BITE?</h2>
+      <div class="why-cards">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-leaf"></i></div>
+          <h3>Fresh & Delicious</h3>
+          <p>Our food is prepared fresh daily with quality ingredients to ensure every bite is delicious.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Save Time & Efforts</h3>
+          <p>We ensure your food arrives promptly at the pickup counter, hot and ready to eat.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Easy Ordering</h3>
+          <p>Our intuitive platform makes ordering your favorite meals simple and hassle-free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Menu -->
+  <section class="featured-menu-section">
+    <div class="container">
+      <div class="featured-header">
+        <h2 class="section-title">Most Popular Items</h2>
+        <a href="menu.html" class="view-menu-link">View Full Menu <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="featured-menu-grid">
+        <div class="menu-card">
+          <div class="menu-img-wrap">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Classic Burger">
+            <span class="badge badge-featured">Popular</span>
+          </div>
+          <h3>Classic Burger</h3>
+          <p>Juicy beef patty with lettuce, tomato, and special sauce</p>
+          <div class="menu-card-bottom">
+            <span class="menu-price">₹120</span>
+            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img-wrap">
+            <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Margherita Pizza">
+            <span class="badge badge-veg">Vegetarian</span>
+            <span class="badge badge-featured">Popular</span>
+          </div>
+          <h3>Margherita Pizza</h3>
+          <p>Traditional pizza with tomato sauce, mozzarella, and basil</p>
+          <div class="menu-card-bottom">
+            <span class="menu-price">₹180</span>
+            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img-wrap">
+            <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Veggie Stir Fry">
+            <span class="badge badge-veg">Vegetarian</span>
+            <span class="badge badge-featured">Popular</span>
+          </div>
+          <h3>Veggie Stir Fry</h3>
+          <p>Fresh vegetables stir-fried with tofu and served with rice</p>
+          <div class="menu-card-bottom">
+            <span class="menu-price">₹150</span>
+            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-img-wrap">
+            <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Chocolate Brownie">
+            <span class="badge badge-veg">Vegetarian</span>
+            <span class="badge badge-featured">Popular</span>
+          </div>
+          <h3>Chocolate Brownie</h3>
+          <p>Rich chocolate brownie with vanilla ice cream</p>
+          <div class="menu-card-bottom">
+            <span class="menu-price">₹80</span>
+            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to Order?</h2>
+        <p>Start your culinary journey today with BYTE & BITE. Order online for pickup at the Tuck Shop.</p>
+        <a href="menu.html" class="btn btn-outline">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <img src="../assets/images/tuck.jpg" alt="Tuck Shop" class="logo-img" style="width:300px; height:300px; object-fit:cover; border-radius:18px; display:block; margin:0 auto 1em auto;">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        <p>Delicious food at your doorstep. Order online for fast pickup at the Tuck Shop.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="#about">About Us</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Tuck Shop Lane, MIT ADT University</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: info@bytebite.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p>Sat: 9:00 AM - 10:00 PM</p>
+        <p>Sun: 10:00 AM - 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BYTE & BITE. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="../assets/js/home.js"></script>
+  <script src="../assets/js/cart-init.js"></script>
+  <script src="../assets/js/featured-menu.js"></script>
+  <script>
+  function updateUserNav() {
+    const navActions = document.getElementById('navActions');
+    const accessToken = localStorage.getItem('access');
+    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    let html = '';
+    // Cart count from localStorage
+    let cartCount = 0;
+    try {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    } catch {}
+    html += `<a href="cart.html" class="cart-icon${window.location.pathname.includes('cart.html') ? ' active' : ''}">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">${cartCount}</span>
+    </a>`;
+    if (accessToken) {
+      // Show profile button
+      const avatar = userData.avatar || '../assets/images/user-avatar.png';
+      html += `<a href="profile.html" class="profile-btn"><img src="${avatar}" alt="Profile" class="profile-pic"></a>`;
+    } else {
+      // Show login/signup
+      html += `<a href="login.html" class="btn btn-primary nav-signin">Login/Signup</a>`;
+    }
+    navActions.innerHTML = html;
+  }
+  document.addEventListener('DOMContentLoaded', updateUserNav);
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'cart') updateUserNav();
+  });
+  </script>
+  <style>
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+      border: 2px solid #ff6600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .profile-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</body>
+</html> 

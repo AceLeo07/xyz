@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth | Byte & Bite</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .role-toggle { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; }
+    .role-btn { padding: 0.5rem 1.5rem; border-radius: 8px; border: 2px solid #ff6600; background: #fff; color: #ff6600; font-weight: 700; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .role-btn.active, .role-btn:hover { background: #ff6600; color: #fff; }
+    .tab-toggle { display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; }
+    .tab-btn { padding: 0.5rem 1.5rem; border-radius: 8px; border: 2px solid #181818; background: #fff; color: #181818; font-weight: 700; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .tab-btn.active, .tab-btn:hover { background: #181818; color: #fff; }
+    #error-message { color: red; margin-bottom: 10px; display: none; }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container nav-flex nav-3col">
+      <div class="logo">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <div class="nav-actions"></div>
+    </div>
+  </header>
+  <section class="auth-section" style="margin-top: 80px;">
+    <div class="auth-container">
+      <div class="tab-toggle">
+        <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn" id="signupTab" onclick="switchTab('signup')">Sign Up</button>
+      </div>
+      <div class="role-toggle">
+        <button class="role-btn active" id="userRole" onclick="switchRole('user')">User</button>
+        <button class="role-btn" id="sellerRole" onclick="switchRole('seller')">Seller</button>
+      </div>
+      <div id="error-message"></div>
+      <div id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="login-email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="login-phone">Phone Number</label>
+          <input type="tel" id="login-phone" name="login-phone" placeholder="Or enter your phone number">
+        </div>
+        <button type="button" onclick="sendOTP('login')" class="btn btn-primary">Send OTP</button>
+        <div id="login-otp-form" style="display: none;">
+          <div class="form-group">
+            <label for="login-otp">Enter OTP</label>
+            <input type="text" id="login-otp" name="login-otp" placeholder="Enter OTP">
+          </div>
+          <button type="button" onclick="verifyOTP('login')" class="btn btn-primary">Verify OTP</button>
+          <button type="button" onclick="resendOTP('login')" class="btn btn-link">Resend OTP</button>
+        </div>
+      </div>
+      <div id="signup-form" style="display: none;">
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input type="text" id="signup-username" name="signup-username" placeholder="Choose a username">
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" name="signup-email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="signup-phone">Phone Number</label>
+          <input type="tel" id="signup-phone" name="signup-phone" placeholder="Or enter your phone number">
+        </div>
+        <button type="button" onclick="sendOTP('signup')" class="btn btn-primary">Send OTP</button>
+        <div id="signup-otp-form" style="display: none;">
+          <div class="form-group">
+            <label for="signup-otp">Enter OTP</label>
+            <input type="text" id="signup-otp" name="signup-otp" placeholder="Enter OTP">
+          </div>
+          <button type="button" onclick="verifyOTP('signup')" class="btn btn-primary">Verify OTP</button>
+          <button type="button" onclick="resendOTP('signup')" class="btn btn-link">Resend OTP</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        <p>Delicious food at your doorstep. Order online for fast pickup at the Tuck Shop.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Tuck Shop Lane, MIT ADT University</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: info@bytebite.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p>Sat: 9:00 AM - 10:00 PM</p>
+        <p>Sun: 10:00 AM - 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BYTE & BITE. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    let currentRole = 'user';
+    let currentTab = 'login';
+    let loginUserId = null;
+    let signupUserId = null;
+    function switchRole(role) {
+      currentRole = role;
+      document.getElementById('userRole').classList.toggle('active', role === 'user');
+      document.getElementById('sellerRole').classList.toggle('active', role === 'seller');
+    }
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById('loginTab').classList.toggle('active', tab === 'login');
+      document.getElementById('signupTab').classList.toggle('active', tab === 'signup');
+      document.getElementById('login-form').style.display = tab === 'login' ? '' : 'none';
+      document.getElementById('signup-form').style.display = tab === 'signup' ? '' : 'none';
+      clearError();
+    }
+    function showError(message) {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+    }
+    function clearError() {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = '';
+      errorDiv.style.display = 'none';
+    }
+    async function sendOTP(type) {
+      clearError();
+      if (type === 'login') {
+        const email = document.getElementById('login-email').value;
+        const phone = document.getElementById('login-phone').value;
+        if (!email && !phone) {
+          showError('Please enter your email or phone number');
+          return;
+        }
+        try {
+          const response = await fetch('http://localhost:5000/api/auth/login/initiate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, phone_number: phone })
+          });
+          const data = await response.json();
+          if (response.ok) {
+            loginUserId = data.user_id;
+            document.getElementById('login-otp-form').style.display = 'block';
+          } else {
+            showError(data.error || 'Failed to send OTP');
+          }
+        } catch (error) {
+          showError('Error sending OTP. Please try again.');
+        }
+      } else {
+        const username = document.getElementById('signup-username').value;
+        const email = document.getElementById('signup-email').value;
+        const phone = document.getElementById('signup-phone').value;
+        if (!username || (!email && !phone)) {
+          showError('Please fill in all required fields');
+          return;
+        }
+        try {
+          const response = await fetch('http://localhost:5000/api/auth/register/initiate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username, email: email, phone_number: phone, role: currentRole })
+          });
+          const data = await response.json();
+          if (response.ok) {
+            signupUserId = data.user_id;
+            document.getElementById('signup-otp-form').style.display = 'block';
+          } else {
+            showError(data.error || 'Failed to send OTP');
+          }
+        } catch (error) {
+          showError('Error sending OTP. Please try again.');
+        }
+      }
+    }
+    async function verifyOTP(type) {
+      clearError();
+      if (type === 'login') {
+        const otp = document.getElementById('login-otp').value;
+        if (!otp || !loginUserId) {
+          showError('Please enter the OTP');
+          return;
+        }
+        try {
+          const response = await fetch('http://localhost:5000/api/auth/login/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: loginUserId, otp: otp })
+          });
+          const data = await response.json();
+          if (response.ok) {
+            localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            window.location.href = 'index.html';
+          } else {
+            showError(data.error || 'Invalid OTP');
+          }
+        } catch (error) {
+          showError('Error verifying OTP. Please try again.');
+        }
+      } else {
+        const otp = document.getElementById('signup-otp').value;
+        if (!otp || !signupUserId) {
+          showError('Please enter the OTP');
+          return;
+        }
+        try {
+          const response = await fetch('http://localhost:5000/api/auth/register/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: signupUserId, otp: otp })
+          });
+          const data = await response.json();
+          if (response.ok) {
+            localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            window.location.href = 'index.html';
+          } else {
+            showError(data.error || 'Invalid OTP');
+          }
+        } catch (error) {
+          showError('Error verifying OTP. Please try again.');
+        }
+      }
+    }
+    async function resendOTP(type) {
+      await sendOTP(type);
+    }
+    // Auto-login if token exists
+    window.onload = function() {
+      const token = localStorage.getItem('token');
+      if (token) {
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+</body>
+</html> 

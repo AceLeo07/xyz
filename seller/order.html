@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BYTE&BITE - Orders Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <link rel="stylesheet" href="../assets/css/order.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="./dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+        <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+        <li><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+        <li class="active"><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+        <li><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+        <li><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+        <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+        <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <div class="header-row">
+        <div class="header-center">
+          <span class="header-title">Orders Management</span>
+        </div>
+        <div class="header-right">
+          <a href="seller_profile.html" class="profile-btn">
+            <span class="profile-img"><i class="fa fa-user-circle"></i></span>
+            <span class="profile-name">Administration</span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <section class="order-container">
+      <div class="search-container">
+        <input type="text" id="orderSearch" class="search-input" placeholder="Search by Order ID, Customer, Items...">
+        <select id="orderStatusFilter" class="filter-select">
+          <option value="all">All Statuses</option>
+          <option value="preparing">Preparing</option>
+          <option value="ready">Ready for Pickup</option>
+          <option value="completed">Completed</option>
+          <option value="onhold">On Hold</option>
+        </select>
+        <button id="addOrderBtn" class="add-order-btn">
+          <i class="fas fa-plus"></i> Add New Order
+        </button>
+      </div>
+      
+      <div class="order-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody">
+            <!-- Orders will be populated here -->
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="pagination">
+        <button id="prevPage" disabled>Previous</button>
+        <span class="pagination-info">
+          Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+        </span>
+        <button id="nextPage" disabled>Next</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Order Details Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Order Details</h3>
+        <button class="close-modal" id="closeOrderModal">&times;</button>
+      </div>
+      <div id="orderDetailsContent">
+        <!-- Order details will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice Modal -->
+  <div id="invoiceModal" class="modal">
+    <div class="modal-content invoice-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Invoice</h3>
+        <button class="close-modal" id="closeInvoiceModal">&times;</button>
+      </div>
+      <div id="invoiceDetails"></div>
+    </div>
+  </div>
+
+  <!-- Add Order Modal -->
+  <div id="addOrderModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Order</h3>
+        <button class="close-modal" onclick="orderSystem.closeModal('addOrderModal')">&times;</button>
+      </div>
+      <div class="add-order-form">
+        <div class="form-group">
+          <label for="customerName">Customer Name</label>
+          <input type="text" id="customerName" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label>Order Items</label>
+          <div id="orderItems">
+            <div class="order-item">
+              <select class="item-select">
+                <option value="">Select Item</option>
+                <option value="Chicken Biryani">Chicken Biryani</option>
+                <option value="Veg Biryani">Veg Biryani</option>
+                <option value="Butter Chicken">Butter Chicken</option>
+                <option value="Naan">Naan</option>
+                <option value="Coke">Coke</option>
+                <option value="Sprite">Sprite</option>
+              </select>
+              <input type="number" class="item-quantity" min="1" value="1" placeholder="Qty">
+              <button class="remove-item-btn" onclick="orderSystem.removeOrderItem(this)">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <button class="add-item-btn" onclick="orderSystem.addOrderItem()">
+            <i class="fas fa-plus"></i> Add Item
+          </button>
+        </div>
+        <div class="form-group">
+          <label>Total Amount: $<span id="orderTotal">0.00</span></label>
+        </div>
+        <div class="form-actions">
+          <button class="cancel-btn" onclick="orderSystem.closeModal('addOrderModal')">Cancel</button>
+          <button class="submit-btn" onclick="orderSystem.submitNewOrder()">Create Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/order.js"></script>
+</body>
+</html> 

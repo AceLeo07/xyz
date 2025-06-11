@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BYTE&BITE - Customer Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/customer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
+                <li><a href="./dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+                <li class="active"><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+                <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+                <li><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+                <li><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+                <li><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+                <li><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+                <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+                <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+                <li><a href="./administration.html" id="logout-btn"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <header>
+            <div class="header-row">
+                <div class="header-center" style="width:100%;text-align:center;">
+                    <span class="header-title">Customer Management</span>
+                </div>
+            </div>
+        </header>
+        <section class="customer-container">
+            <div class="search-container">
+                <input type="text" id="customerSearch" class="search-input" placeholder="Search by name or ID...">
+                <select id="customerFilter" class="filter-select">
+                    <option value="all">All Customers</option>
+                    <option value="new">New</option>
+                    <option value="regular">Regular</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            
+            <div class="customer-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Name</th>
+                            <th>Total Orders</th>
+                            <th>Total Spent</th>
+                            <th>Last Order</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                        <!-- Customer data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination">
+                <button id="prevPage" disabled>Previous</button>
+                <span class="pagination-info">
+                    Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+                </span>
+                <button id="nextPage" disabled>Next</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Customer Details Modal -->
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Customer Details</h3>
+                <button class="close-modal" id="closeCustomerModal">&times;</button>
+            </div>
+            
+            <div class="customer-info">
+                <div class="info-item">
+                    <span class="info-label">Customer ID</span>
+                    <span class="info-value" id="modalCustomerId">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Name</span>
+                    <span class="info-value" id="modalCustomerName">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Total Orders</span>
+                    <span class="info-value" id="modalTotalOrders">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Total Spent</span>
+                    <span class="info-value" id="modalTotalSpent">-</span>
+                </div>
+            </div>
+            
+            <div class="order-history">
+                <h4>Order History</h4>
+                <div id="modalOrderList">
+                    <!-- Order history will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/customer.js"></script>
+</body>
+</html> 

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BYTE&BITE - Food Menu Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <link rel="stylesheet" href="../assets/css/food_menu.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="../dashboard.html"><i class="fa fa-chart-line"></i> Analytics</a></li>
+        <li><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+        <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+        <li class="active"><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+        <li><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+        <li><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+        <li><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+        <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+        <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="./administration.html" id="logout-btn"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <div class="header-row">
+        <div class="header-center" style="width:100%;text-align:center;">
+          <span class="header-title">Food Menu Management</span>
+        </div>
+      </div>
+    </header>
+    <section class="food-menu-section">
+      <div class="menu-tabs">
+        <button class="tab-btn active" id="add-menu-tab">Add Menu</button>
+        <button class="tab-btn" id="manage-menu-tab">Manage Menu</button>
+      </div>
+      <div class="tab-content" id="add-menu-content">
+        <form id="add-menu-form" class="menu-form">
+          <div class="form-group">
+            <label for="food-name">Food Name</label>
+            <input type="text" id="food-name" required>
+          </div>
+          <div class="form-group">
+            <label for="food-category">Category</label>
+            <select id="food-category" required>
+              <option value="">Select Category</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="food-price">Price</label>
+            <input type="number" id="food-price" min="0" step="0.01" required>
+          </div>
+          <div class="form-group">
+            <label for="food-qty">Daily Quantity</label>
+            <input type="number" id="food-qty" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="food-img">Image</label>
+            <input type="file" id="food-img" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label for="food-desc">Description</label>
+            <textarea id="food-desc" required></textarea>
+          </div>
+          <button type="submit" class="save-btn">Add Food Item</button>
+        </form>
+      </div>
+      <div class="tab-content" id="manage-menu-content" style="display:none;">
+        <div class="menu-actions">
+          <div class="search-box">
+            <input type="text" id="menu-search" placeholder="Search menu...">
+            <i class="fa fa-search"></i>
+          </div>
+        </div>
+        <div class="menu-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="menu-table-body">
+              <!-- Menu items will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Edit Food Modal -->
+  <div id="edit-food-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="edit-modal-title">Edit Food Item</h3>
+      <form id="edit-food-form">
+        <input type="hidden" id="edit-food-id">
+        <div class="form-group">
+          <label for="edit-food-name">Food Name</label>
+          <input type="text" id="edit-food-name" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-food-category">Category</label>
+          <select id="edit-food-category" required></select>
+        </div>
+        <div class="form-group">
+          <label for="edit-food-price">Price</label>
+          <input type="number" id="edit-food-price" min="0" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-food-qty">Daily Quantity</label>
+          <input type="number" id="edit-food-qty" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-food-img">Image</label>
+          <input type="file" id="edit-food-img" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label for="edit-food-desc">Description</label>
+          <textarea id="edit-food-desc" required></textarea>
+        </div>
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../assets/js/food_menu.js"></script>
+</body>
+</html> 

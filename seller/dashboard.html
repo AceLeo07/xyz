@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BYTE&BITE Analytics Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="../index.html" class="logo-link">
+                <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+                <li class="active"><a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+                <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+                <li><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+                <li><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+                <li><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+                <li><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+                <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+                <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+                <li><a href="./administration.html" id="logout-btn"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <header>
+            <div class="header-row">
+                <div class="header-center" style="width:100%;text-align:center;">
+                    <span class="header-title">Business Analytics Dashboard</span>
+                </div>
+            </div>
+        </header>
+        <section class="dashboard-section">
+            <div class="dashboard-grid">
+                <!-- Sales Analytics -->
+                <div class="dashboard-card sales-analytics-card">
+                    <h3>Sales Analytics</h3>
+                    <div class="analytics-summary">
+                        <div class="analytics-stat">
+                            <div class="stat-label">Total Sales</div>
+                            <div class="stat-value" id="dashboard-total-sales">₹0.00</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Orders</div>
+                            <div class="stat-value" id="dashboard-total-orders">0</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Avg. Order Value</div>
+                            <div class="stat-value" id="dashboard-avg-order">₹0.00</div>
+                        </div>
+                    </div>
+                    <div class="analytics-periods">
+                        <button class="analytics-period-btn active" data-period="day">Day</button>
+                        <button class="analytics-period-btn" data-period="week">Week</button>
+                        <button class="analytics-period-btn" data-period="month">Month</button>
+                        <button class="analytics-period-btn" data-period="quarter">Quarter</button>
+                        <button class="analytics-period-btn" data-period="year">Year</button>
+                    </div>
+                    <div class="analytics-chart">
+                        <canvas id="sales-analytics-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Customer Trends -->
+                <div class="dashboard-card customer-trends-card">
+                    <h3>Customer Trends</h3>
+                    <div class="analytics-summary">
+                        <div class="analytics-stat">
+                            <div class="stat-label">New Customers</div>
+                            <div class="stat-value" id="dashboard-new-customers">0</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Returning</div>
+                            <div class="stat-value" id="dashboard-returning-customers">0</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Growth</div>
+                            <div class="stat-value" id="dashboard-customer-growth">0%</div>
+                        </div>
+                    </div>
+                    <div class="analytics-chart">
+                        <canvas id="customer-trends-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Raw Materials Analysis -->
+                <div class="dashboard-card materials-analysis-card">
+                    <h3>Raw Materials Analysis</h3>
+                    <div class="analytics-summary">
+                        <div class="analytics-stat">
+                            <div class="stat-label">Daily Usage</div>
+                            <div class="stat-value" id="dashboard-daily-usage">0 kg</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Stock Level</div>
+                            <div class="stat-value" id="dashboard-stock-level">0 kg</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Reorder Point</div>
+                            <div class="stat-value" id="dashboard-reorder-point">0 kg</div>
+                        </div>
+                    </div>
+                    <div class="analytics-chart">
+                        <canvas id="materials-usage-chart"></canvas>
+                    </div>
+                    <div class="materials-list">
+                        <h4>Materials Required Today</h4>
+                        <div id="materialsList" class="materials-table">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Summary -->
+                <div class="dashboard-card inventory-summary-card">
+                    <h3>Inventory Summary</h3>
+                    <div class="inventory-summary">
+                        <div class="inventory-stat">
+                            <div class="stat-label">Total Items</div>
+                            <div class="stat-value" id="dashboard-total-items">0</div>
+                        </div>
+                        <div class="inventory-stat">
+                            <div class="stat-label">Low Stock</div>
+                            <div class="stat-value low-stock" id="dashboard-low-stock">0</div>
+                        </div>
+                        <div class="inventory-stat">
+                            <div class="stat-label">Out of Stock</div>
+                            <div class="stat-value out-stock" id="dashboard-out-stock">0</div>
+                        </div>
+                    </div>
+                    <div class="analytics-chart">
+                        <canvas id="inventory-distribution-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Staff Performance -->
+                <div class="dashboard-card staff-performance-card">
+                    <h3>Staff Performance</h3>
+                    <div class="staff-performance">
+                        <div class="staff-stat">
+                            <div class="stat-label">Top Performer</div>
+                            <div class="stat-value" id="dashboard-top-staff">-</div>
+                        </div>
+                        <div class="staff-stat">
+                            <div class="stat-label">Attendance</div>
+                            <div class="stat-value" id="dashboard-attendance">0%</div>
+                        </div>
+                        <div class="staff-stat">
+                            <div class="stat-label">Recent Activity</div>
+                            <div class="stat-value" id="dashboard-recent-activity">-</div>
+                        </div>
+                    </div>
+                    <div class="analytics-chart">
+                        <canvas id="staff-performance-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Peak Hours Analysis -->
+                <div class="dashboard-card peak-hours-card">
+                    <h3>Peak Hours Analysis</h3>
+                    <div class="analytics-summary">
+                        <div class="analytics-stat">
+                            <div class="stat-label">Busiest Hour</div>
+                            <div class="stat-value" id="dashboard-busiest-hour">-</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Avg. Orders/Hour</div>
+                            <div class="stat-value" id="dashboard-avg-orders-hour">0</div>
+                        </div>
+                        <div class="analytics-stat">
+                            <div class="stat-label">Peak Revenue</div>
+                            <div class="stat-value" id="dashboard-peak-revenue">₹0.00</div>
+                        </div>
+                    </div>
+                    <div class="analytics-chart">
+                        <canvas id="peak-hours-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+</html> 

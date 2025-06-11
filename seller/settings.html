@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BYTE&BITE - Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <link rel="stylesheet" href="../assets/css/settings.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+        <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+        <li><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+        <li><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+        <li><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+        <li><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+        <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+        <li class="active"><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="#" id="logout-btn"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <div class="header-row">
+        <div class="header-center">
+          <span class="header-title">Settings</span>
+        </div>
+      </div>
+    </header>
+    <section class="settings-section">
+      <div class="settings-card">
+        <h3><i class="fa fa-user"></i> Profile & Account</h3>
+        <form class="settings-form">
+          <div class="form-group">
+            <label for="profile-name">Full Name</label>
+            <input type="text" id="profile-name" class="form-input" value="John Seller">
+          </div>
+          <div class="form-group">
+            <label for="profile-email">Email</label>
+            <input type="email" id="profile-email" class="form-input" value="seller@bytebite.com">
+          </div>
+          <div class="form-group">
+            <label for="profile-phone">Phone</label>
+            <input type="tel" id="profile-phone" class="form-input" value="+91-9876543210">
+          </div>
+          <div class="form-group">
+            <label for="profile-pic">Profile Picture</label>
+            <input type="file" id="profile-pic" class="form-input">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="submit-btn">Update Profile</button>
+          </div>
+        </form>
+      </div>
+      <div class="settings-card">
+        <h3><i class="fa fa-store"></i> Business Information</h3>
+        <form class="settings-form">
+          <div class="form-group">
+            <label for="business-name">Shop Name</label>
+            <input type="text" id="business-name" class="form-input" value="BYTE&BITE Canteen">
+          </div>
+          <div class="form-group">
+            <label for="business-address">Address</label>
+            <input type="text" id="business-address" class="form-input" value="MIT College Loni Kalbhor, Pune">
+          </div>
+          <div class="form-group">
+            <label for="business-gst">GST Number</label>
+            <input type="text" id="business-gst" class="form-input" value="27ABCDE1234F1Z5">
+          </div>
+          <div class="form-group">
+            <label for="business-contact">Contact Number</label>
+            <input type="tel" id="business-contact" class="form-input" value="+91-9876543210">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="submit-btn">Update Business Info</button>
+          </div>
+        </form>
+      </div>
+      <div class="settings-card">
+        <h3><i class="fa fa-sliders-h"></i> Preferences</h3>
+        <form class="settings-form">
+          <div class="form-group">
+            <label for="currency">Currency</label>
+            <select id="currency" class="form-input">
+              <option value="INR">INR (₹)</option>
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="language">Language</label>
+            <select id="language" class="form-input">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><input type="checkbox" id="notif-email" checked> Email Notifications</label>
+          </div>
+          <div class="form-group">
+            <label><input type="checkbox" id="notif-sms"> SMS Notifications</label>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="submit-btn">Save Preferences</button>
+          </div>
+        </form>
+      </div>
+      <div class="settings-card">
+        <h3><i class="fa fa-credit-card"></i> Payment Settings</h3>
+        <form class="settings-form">
+          <div class="form-group">
+            <label for="upi-id">UPI ID</label>
+            <input type="text" id="upi-id" class="form-input" value="bytebite@upi">
+          </div>
+          <div class="form-group">
+            <label for="bank-account">Bank Account</label>
+            <input type="text" id="bank-account" class="form-input" value="1234567890">
+          </div>
+          <div class="form-group">
+            <label for="ifsc">IFSC Code</label>
+            <input type="text" id="ifsc" class="form-input" value="SBIN0001234">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="submit-btn">Update Payment Info</button>
+          </div>
+        </form>
+      </div>
+      <div class="settings-card">
+        <h3><i class="fa fa-shield-alt"></i> Security</h3>
+        <form class="settings-form">
+          <div class="form-group">
+            <label for="current-password">Current Password</label>
+            <input type="password" id="current-password" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm New Password</label>
+            <input type="password" id="confirm-password" class="form-input">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="submit-btn">Change Password</button>
+          </div>
+        </form>
+      </div>
+      <div class="settings-card">
+        <h3><i class="fa fa-question-circle"></i> Support & Help</h3>
+        <div class="support-info">
+          <p>Need help? Contact our support team:</p>
+          <ul>
+            <li>Email: <a href="mailto:support@bytebite.com">support@bytebite.com</a></li>
+            <li>Phone: <a href="tel:+911234567890">+91-1234567890</a></li>
+          </ul>
+          <p><a href="#">FAQ</a> | <a href="#">Terms & Conditions</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          localStorage.clear();
+          sessionStorage.clear();
+          window.location.href = 'login.html';
+        });
+      }
+    });
+  </script>
+</body>
+</html> 

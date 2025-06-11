@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Byte & Bite - MIT ADT University</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/user.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+      border: 2px solid #ff6600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .profile-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(255, 102, 0, 0.2);
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <header class="main-header">
+    <div class="container nav-flex nav-3col">
+      <div class="logo">
+        <a href="../index.html" style="text-decoration:none; color:inherit;">
+          <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </nav>
+      <div class="nav-actions" id="navActions">
+        <!-- Navigation actions will be dynamically rendered by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- About Hero -->
+  <section class="about-hero" style="background:#f7f9fb; padding:7rem 0 3rem 0; text-align:center;">
+    <div class="container">
+      <h1 style="font-size:3rem; font-weight:900; color:#181818; margin-bottom:1.2rem;">About BYTE<span style='color:#ff6600;'>&</span>BITE</h1>
+      <p style="font-size:1.25rem; color:#757575; max-width:600px; margin:0 auto 2.5rem auto;">Byte & Bite is the official online ordering platform for the Tuck Shop at MIT ADT University. We make it easy for students to order, pay, and pick up delicious food—fast, fresh, and hassle-free.</p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Tuck Shop" style="width:100%; max-width:700px; border-radius:18px; box-shadow:0 4px 32px rgba(24,24,24,0.10); margin:0 auto;">
+    </div>
+  </section>
+
+  <!-- Tuck Shop & MIT ADT Section -->
+  <section class="about-tuckshop" style="background:#fff; padding:4rem 0;">
+    <div class="container" style="display:flex; flex-wrap:wrap; gap:2.5rem; align-items:center;">
+      <div style="flex:1; min-width:260px;">
+        <h2 style="font-size:2rem; font-weight:800; color:#181818; margin-bottom:1rem;">The Tuck Shop at MIT ADT</h2>
+        <p style="color:#757575; font-size:1.08rem; margin-bottom:1.2rem;">Located at the heart of MIT ADT University, the Tuck Shop is a vibrant hub for students to grab a quick bite, enjoy a meal with friends, or recharge between classes. Our menu is curated to offer a variety of delicious, affordable, and healthy options for everyone.</p>
+        <ul style="color:#181818; font-size:1.08rem; margin-bottom:1.2rem;">
+          <li>Freshly prepared meals every day</li>
+          <li>Buffet, pay-and-eat, and canteen options</li>
+          <li>Online ordering and cashless payment</li>
+          <li>Quick pickup and real-time order tracking</li>
+        </ul>
+        <p style="color:#757575; font-size:1.08rem;">Proudly serving the MIT ADT community with love and care!</p>
+      </div>
+      <div style="flex:1; min-width:260px; text-align:center;">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="MIT ADT University" style="width:100%; max-width:350px; border-radius:16px; box-shadow:0 2px 16px rgba(24,24,24,0.10);">
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Team Section -->
+  <section class="about-mission" style="background:#f7f9fb; padding:4rem 0;">
+    <div class="container" style="max-width:900px;">
+      <h2 style="font-size:2rem; font-weight:800; color:#181818; text-align:center; margin-bottom:2rem;">Our Mission</h2>
+      <p style="color:#757575; font-size:1.15rem; text-align:center; max-width:700px; margin:0 auto 2.5rem auto;">To empower students with a seamless, digital-first food experience—making campus life tastier, easier, and more connected. We believe in great food, great service, and great community.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:2.5rem; justify-content:center;">
+        <div style="flex:1; min-width:220px; max-width:260px; background:#fff; border-radius:14px; box-shadow:0 2px 12px rgba(24,24,24,0.07); padding:2rem 1.2rem; text-align:center;">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" style="width:70px; height:70px; border-radius:50%; margin-bottom:1rem;">
+          <h3 style="font-size:1.15rem; color:#181818; font-weight:700; margin-bottom:0.3rem;">Adarsh Kumar</h3>
+          <p style="color:#757575; font-size:1rem;">Lead Developer & Student, MIT ADT</p>
+        </div>
+        <div style="flex:1; min-width:220px; max-width:260px; background:#fff; border-radius:14px; box-shadow:0 2px 12px rgba(24,24,24,0.07); padding:2rem 1.2rem; text-align:center;">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" style="width:70px; height:70px; border-radius:50%; margin-bottom:1rem;">
+          <h3 style="font-size:1.15rem; color:#181818; font-weight:700; margin-bottom:0.3rem;">Priya Sharma</h3>
+          <p style="color:#757575; font-size:1rem;">UI/UX Designer & Student, MIT ADT</p>
+        </div>
+        <div style="flex:1; min-width:220px; max-width:260px; background:#fff; border-radius:14px; box-shadow:0 2px 12px rgba(24,24,24,0.07); padding:2rem 1.2rem; text-align:center;">
+          <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Team Member" style="width:70px; height:70px; border-radius:50%; margin-bottom:1rem;">
+          <h3 style="font-size:1.15rem; color:#181818; font-weight:700; margin-bottom:0.3rem;">Rahul Mehta</h3>
+          <p style="color:#757575; font-size:1rem;">Backend & Integrations, MIT ADT</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Contact Us</h2>
+        <p>Have questions, feedback, or want to collaborate? Reach out to the Byte & Bite team at <a href="mailto:info@bytebite.com" style="color:#ff6600;">info@bytebite.com</a> or visit us at the Tuck Shop, MIT ADT University.</p>
+        <a href="menu.html" class="btn btn-outline">Browse Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-flex">
+      <div class="footer-brand">
+        <span class="brand"><span class="brand-bold">BYTE</span><span class="brand-amp">&</span><span class="brand-bite">BITE</span></span>
+        <p>Delicious food at your doorstep. Order online for fast pickup at the Tuck Shop.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="orders.html">My Orders</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Tuck Shop Lane, MIT ADT University</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: info@bytebite.com</p>
+      </div>
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p>Sat: 9:00 AM - 10:00 PM</p>
+        <p>Sun: 10:00 AM - 8:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BYTE & BITE. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="../assets/js/cart-init.js"></script>
+  <script>
+  function updateUserNav() {
+    const navActions = document.getElementById('navActions');
+    const accessToken = localStorage.getItem('access');
+    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    let html = '';
+    // Cart count from localStorage
+    let cartCount = 0;
+    try {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    } catch {}
+    html += `<a href="cart.html" class="cart-icon${window.location.pathname.includes('cart.html') ? ' active' : ''}">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">${cartCount}</span>
+    </a>`;
+    if (accessToken) {
+      // Show profile button
+      const avatar = userData.avatar || '../assets/images/user-avatar.png';
+      html += `<a href="profile.html" class="profile-btn"><img src="${avatar}" alt="Profile" class="profile-pic"></a>`;
+    } else {
+      // Show login/signup
+      html += `<a href="login.html" class="btn btn-primary nav-signin">Login/Signup</a>`;
+    }
+    navActions.innerHTML = html;
+  }
+  document.addEventListener('DOMContentLoaded', updateUserNav);
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'cart') updateUserNav();
+  });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,211 @@
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0e0 100%);
+    padding: 20px;
+}
+
+.auth-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.auth-header .logo-link {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.auth-header h2 {
+    color: var(--primary);
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: var(--muted);
+    font-size: 1.1em;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.auth-tabs .tab-btn {
+    flex: 1;
+    background: #fff;
+    color: var(--primary);
+    border: 1.5px solid var(--accent);
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.auth-tabs .tab-btn.active,
+.auth-tabs .tab-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.input-with-icon {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+}
+
+.input-with-icon input[type="password"],
+.input-with-icon input[type="text"] {
+    padding-right: 40px;
+}
+
+.input-with-icon input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 12px 12px 40px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.2s;
+}
+
+.input-with-icon input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+    z-index: 2;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-btn {
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.auth-btn:hover {
+    background: var(--primary);
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* University logo in the corner */
+.mitadt-corner {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2000;
+}
+.mitadt-logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 0;
+}
+@media (max-width: 600px) {
+    .mitadt-corner {
+        top: 8px;
+        left: 8px;
+    }
+    .mitadt-logo {
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-box {
+        padding: 24px 16px;
+    }
+
+    .auth-header h2 {
+        font-size: 1.5em;
+    }
+
+    .auth-form .form-group {
+        margin-bottom: 16px;
+    }
+
+    .input-with-icon input {
+        font-size: 0.95em;
+    }
+} 

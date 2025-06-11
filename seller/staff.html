@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BYTE&BITE - Staff Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <link rel="stylesheet" href="../assets/css/staff.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="../index.html" class="logo-link">
+        <span class="logo-text"><span class="logo-black">BYTE</span><span class="logo-orange">&</span><span class="logo-black">BITE</span></span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="dashboard.html"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="customer.html"><i class="fa fa-user"></i> Customer</a></li>
+        <li><a href="food_category.html"><i class="fa fa-th-large"></i> Food Category</a></li>
+        <li><a href="food_menu.html"><i class="fa fa-utensils"></i> Food Menu</a></li>
+        <li><a href="order.html"><i class="fa fa-receipt"></i> Order</a></li>
+        <li><a href="stock.html"><i class="fa fa-boxes"></i> Stock Management</a></li>
+        <li class="active"><a href="staff.html"><i class="fa fa-users"></i> Staff Management</a></li>
+        <li><a href="invoice.html"><i class="fa fa-file-invoice"></i> Invoice</a></li>
+        <li><a href="settings.html"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="./administration.html" id="logout-btn"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <div class="header-row">
+        <div class="header-center" style="width:100%;text-align:center;">
+          <span class="header-title">Staff Management</span>
+        </div>
+      </div>
+    </header>
+    <section class="staff-container">
+      <div class="staff-actions">
+        <div class="search-container">
+          <input type="text" id="staffSearch" class="search-input" placeholder="Search staff by name or ID...">
+          <select id="staffFilter" class="filter-select">
+            <option value="all">All Staff</option>
+            <option value="present">Present Today</option>
+            <option value="absent">Absent Today</option>
+            <option value="late">Late Today</option>
+          </select>
+        </div>
+        <button id="addStaffBtn" class="add-staff-btn">
+          <i class="fas fa-plus"></i> Add New Staff
+        </button>
+      </div>
+
+      <div class="staff-stats">
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <div class="stat-info">
+            <h3>Total Staff</h3>
+            <p id="totalStaff">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-user-check"></i>
+          <div class="stat-info">
+            <h3>Present Today</h3>
+            <p id="presentStaff">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-user-times"></i>
+          <div class="stat-info">
+            <h3>Absent Today</h3>
+            <p id="absentStaff">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-clock"></i>
+          <div class="stat-info">
+            <h3>Late Today</h3>
+            <p id="lateStaff">0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="staff-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Staff ID</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Shift</th>
+              <th>Today's Status</th>
+              <th>Check-in Time</th>
+              <th>Check-out Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="staffTableBody">
+            <!-- Staff data will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Add Staff Modal -->
+  <div id="addStaffModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Staff</h3>
+        <button class="close-modal" onclick="staffSystem.closeModal('addStaffModal')">&times;</button>
+      </div>
+      <div class="add-staff-form">
+        <div class="form-group">
+          <label for="staffName">Full Name</label>
+          <input type="text" id="staffName" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="staffRole">Role</label>
+          <select id="staffRole" class="form-input" required>
+            <option value="">Select Role</option>
+            <option value="Chef">Chef</option>
+            <option value="Server">Server</option>
+            <option value="Cashier">Cashier</option>
+            <option value="Manager">Manager</option>
+            <option value="Kitchen Helper">Kitchen Helper</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="staffShift">Shift</label>
+          <select id="staffShift" class="form-input" required>
+            <option value="">Select Shift</option>
+            <option value="Morning">Morning (6 AM - 2 PM)</option>
+            <option value="Afternoon">Afternoon (2 PM - 10 PM)</option>
+            <option value="Night">Night (10 PM - 6 AM)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="staffPhone">Phone Number</label>
+          <input type="tel" id="staffPhone" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="staffEmail">Email</label>
+          <input type="email" id="staffEmail" class="form-input" required>
+        </div>
+        <div class="form-actions">
+          <button class="cancel-btn" onclick="staffSystem.closeModal('addStaffModal')">Cancel</button>
+          <button class="submit-btn" onclick="staffSystem.submitNewStaff()">Add Staff</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Staff Details Modal -->
+  <div id="staffDetailsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Staff Details</h3>
+        <button class="close-modal" onclick="staffSystem.closeModal('staffDetailsModal')">&times;</button>
+      </div>
+      <div id="staffDetailsContent">
+        <!-- Staff details will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/staff.js"></script>
+</body>
+</html> 
